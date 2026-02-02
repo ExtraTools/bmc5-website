@@ -1,265 +1,276 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b0f12" />
-  <title>BMC5 SERVER — Minecraft модовый сервер</title>
-  <meta name="description" content="BMC5 SERVER — модовый Minecraft сервер (260+ модов), сложность Hard, уникальный мир. Статус онлайн/оффлайн, карта мира, Discord и YouTube." />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b0f12" />
+    <title>BMC5 SERVER — Minecraft модовый сервер</title>
+    <meta name="description"
+        content="BMC5 SERVER — модовый Minecraft сервер (260+ модов), сложность Normal, уникальный мир. Статус онлайн/оффлайн, карта мира, Discord и YouTube." />
 
-  <!-- Fonts: пиксельный заголовок + читабельный текст -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts: пиксельный заголовок + читабельный текст -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
-  <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
-  <div class="bg">
-    <div class="bg__grid"></div>
-    <div class="bg__noise"></div>
-    <div class="bg__glow"></div>
-  </div>
-
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="BMC5 SERVER">
-        <span class="brand__logo" aria-hidden="true"></span>
-        <span class="brand__text">BMC5 SERVER</span>
-      </a>
-
-      <nav class="nav" aria-label="Навигация">
-        <a href="#features">Особенности</a>
-        <a href="#status">Статус</a>
-        <a href="#map">Карта</a>
-        <a href="#community">Сообщество</a>
-      </nav>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="bg">
+        <div class="bg__grid"></div>
+        <div class="bg__noise"></div>
+        <div class="bg__glow"></div>
     </div>
-    <div class="nav__mobile" id="navMobile" hidden>
-      <a href="#features">Особенности</a>
-      <a href="#status">Статус</a>
-      <a href="#map">Карта</a>
-      <a href="#community">Сообщество</a>
-    </div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <h1 class="hero__title">BMC5 SERVER</h1>
-          <p class="hero__subtitle">
-            Модовый сервер (260+ модов) • <b>Hard</b> • уникальный мир
-          </p>
+    <header class="header">
+        <div class="container header__inner">
+            <a class="brand" href="#top" aria-label="BMC5 SERVER">
+                <span class="brand__logo" aria-hidden="true"></span>
+                <span class="brand__text">BMC5 SERVER</span>
+            </a>
 
-          <div class="ipcard" role="group" aria-label="IP адрес сервера">
-            <div class="ipcard__left">
-              <div class="ipcard__label">IP адрес</div>
-              <div class="ipcard__value" id="serverIpText">play.example.com:25565</div>
-              <div class="ipcard__hint">Нажми “Копировать”, вставь в Minecraft → Multiplayer → Direct Connect</div>
-            </div>
-            <div class="ipcard__right">
-              <button class="btn btn--primary" id="copyIpBtn">Копировать</button>
-              <a class="btn btn--ghost" href="#status">Проверить статус</a>
-            </div>
-          </div>
+            <nav class="nav" aria-label="Навигация">
+                <a href="#features">Особенности</a>
+                <a href="#status">Статус</a>
+                <a href="#map">Карта</a>
+                <a href="#community">Сообщество</a>
+            </nav>
 
-          <div class="hero__badges" aria-label="Быстрые факты">
-            <div class="badge">260+ модов</div>
-            <div class="badge">Hard</div>
-            <div class="badge">Уникальный мир</div>
-            <div class="badge">Modern UI</div>
-          </div>
+            <button class="nav__toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-
-        <div class="hero__art" aria-hidden="true">
-          <div class="block block--grass"></div>
-          <div class="block block--stone"></div>
-          <div class="block block--diamond"></div>
-          <div class="block block--obsidian"></div>
-          <div class="hero__panel">
-            <div class="hero__panelTitle">Живой статус</div>
-            <div class="hero__panelRow">
-              <span>Сервер</span>
-              <span class="pill" id="miniStatus">—</span>
-            </div>
-            <div class="hero__panelRow">
-              <span>Игроки</span>
-              <span id="miniPlayers">—</span>
-            </div>
-            <div class="hero__panelRow">
-              <span>Версия</span>
-              <span id="miniVersion">—</span>
-            </div>
-            <div class="hero__panelHint">Обновляется автоматически</div>
-          </div>
+        <div class="nav__mobile" id="navMobile" hidden>
+            <a href="#features">Особенности</a>
+            <a href="#status">Статус</a>
+            <a href="#map">Карта</a>
+            <a href="#community">Сообщество</a>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Особенности сервера</h2>
-          <p class="section__desc">Коротко и по делу: что делает BMC5 SERVER отличным местом для игры.</p>
-        </div>
+    <main id="top">
+        <section class="hero">
+            <div class="container hero__inner">
+                <div class="hero__copy">
+                    <h1 class="hero__title">BMC5 SERVER</h1>
+                    <p class="hero__subtitle">
+                        Модовый сервер (260+ модов) • <b>Normal</b> • уникальный мир
+                    </p>
 
-        <div class="grid">
-          <article class="card">
-            <h3>260+ модов</h3>
-            <p>Большая мод-сборка: прогрессия, контент, биомы, мобы, качество жизни.</p>
-          </article>
-          <article class="card">
-            <h3>Сложность Hard</h3>
-            <p>Суровый выживач: ценность ресурсов, риск, смысл в подготовке и командной игре.</p>
-          </article>
-          <article class="card">
-            <h3>Уникальный мир</h3>
-            <p>Новые структуры, редкости и места для экспедиций. Мир, где хочется исследовать.</p>
-          </article>
-          <article class="card">
-            <h3>Оптимизация</h3>
-            <p>Акцент на стабильности. Рекомендованы выделение RAM и правильные JVM флаги.</p>
-          </article>
-          <article class="card">
-            <h3>События и челленджи</h3>
-            <p>Ивенты, боссы, испытания. Награды, которые реально мотивируют.</p>
-          </article>
-          <article class="card">
-            <h3>Комьюнити</h3>
-            <p>Discord для общения, новостей, гайдов и поддержки.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+                    <div class="ipcard" role="group" aria-label="IP адрес сервера">
+                        <div class="ipcard__left">
+                            <div class="ipcard__label">IP адрес</div>
+                            <div class="ipcard__value" id="serverIpText">play.example.com:25565</div>
+                            <div class="ipcard__hint">Нажми “Копировать”, вставь в Minecraft → Multiplayer → Direct
+                                Connect</div>
+                        </div>
+                        <div class="ipcard__right">
+                            <button class="btn btn--primary" id="copyIpBtn">Копировать</button>
+                            <a class="btn btn--ghost" href="#status">Проверить статус</a>
+                        </div>
+                    </div>
 
-    <section class="section section--alt" id="status">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Статус сервера</h2>
-          <p class="section__desc">Онлайн/оффлайн, игроки и версия — без лишних движений.</p>
-        </div>
+                    <div class="hero__badges" aria-label="Быстрые факты">
+                        <div class="badge">260+ модов</div>
+                        <div class="badge">Normal</div>
+                        <div class="badge">Уникальный мир</div>
+                        <div class="badge">Modern UI</div>
+                    </div>
+                </div>
 
-        <div class="status">
-          <div class="status__main">
-            <div class="status__label">Сейчас</div>
-            <div class="status__value">
-              <span class="pill pill--big" id="statusPill">Проверяю…</span>
+                <div class="hero__art" aria-hidden="true">
+                    <div class="block block--grass"></div>
+                    <div class="block block--stone"></div>
+                    <div class="block block--diamond"></div>
+                    <div class="block block--obsidian"></div>
+                    <div class="hero__panel">
+                        <div class="hero__panelTitle">Живой статус</div>
+                        <div class="hero__panelRow">
+                            <span>Сервер</span>
+                            <span class="pill" id="miniStatus">—</span>
+                        </div>
+                        <div class="hero__panelRow">
+                            <span>Игроки</span>
+                            <span id="miniPlayers">—</span>
+                        </div>
+                        <div class="hero__panelRow">
+                            <span>Версия</span>
+                            <span id="miniVersion">—</span>
+                        </div>
+                        <div class="hero__panelHint">Обновляется автоматически</div>
+                    </div>
+                </div>
             </div>
-            <div class="status__meta" id="statusMeta">—</div>
+        </section>
 
-            <div class="status__actions">
-              <button class="btn btn--primary" id="refreshBtn">Обновить</button>
-              <span class="status__hint">Автообновление каждые 60 сек</span>
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section__head">
+                    <h2 class="section__title">Особенности сервера</h2>
+                    <p class="section__desc">Коротко и по делу: что делает BMC5 SERVER отличным местом для игры.</p>
+                </div>
+
+                <div class="grid">
+                    <article class="card">
+                        <h3>260+ модов</h3>
+                        <p>Большая мод-сборка: прогрессия, контент, биомы, мобы, качество жизни.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Сложность Normal</h3>
+                        <p>Сбалансированный выживач: достаточный вызов без излишней хардкорности.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Уникальный мир</h3>
+                        <p>Новые структуры, редкости и места для экспедиций. Мир, где хочется исследовать.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Оптимизация</h3>
+                        <p>Акцент на стабильности. Рекомендованы выделение RAM и правильные JVM флаги.</p>
+                    </article>
+                    <article class="card">
+                        <h3>События и челленджи</h3>
+                        <p>Ивенты, боссы, испытания. Награды, которые реально мотивируют.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Комьюнити</h3>
+                        <p>Discord для общения, новостей, гайдов и поддержки.</p>
+                    </article>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="status__side">
-            <div class="kv">
-              <div class="kv__k">Игроки</div>
-              <div class="kv__v" id="playersText">—</div>
+        <section class="section section--alt" id="status">
+            <div class="container">
+                <div class="section__head">
+                    <h2 class="section__title">Статус сервера</h2>
+                    <p class="section__desc">Онлайн/оффлайн, игроки и версия — без лишних движений.</p>
+                </div>
+
+                <div class="status">
+                    <div class="status__main">
+                        <div class="status__label">Сейчас</div>
+                        <div class="status__value">
+                            <span class="pill pill--big" id="statusPill">Проверяю…</span>
+                        </div>
+                        <div class="status__meta" id="statusMeta">—</div>
+
+                        <div class="status__actions">
+                            <button class="btn btn--primary" id="refreshBtn">Обновить</button>
+                            <span class="status__hint">Автообновление каждые 60 сек</span>
+                        </div>
+                    </div>
+
+                    <div class="status__side">
+                        <div class="kv">
+                            <div class="kv__k">Игроки</div>
+                            <div class="kv__v" id="playersText">—</div>
+                        </div>
+                        <div class="kv">
+                            <div class="kv__k">Версия</div>
+                            <div class="kv__v" id="versionText">—</div>
+                        </div>
+                        <div class="kv">
+                            <div class="kv__k">MOTD</div>
+                            <div class="kv__v kv__v--small" id="motdText">—</div>
+                        </div>
+                        <div class="kv">
+                            <div class="kv__k">Последнее обновление</div>
+                            <div class="kv__v kv__v--small" id="lastUpdate">—</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note">
+                    <div class="note__title">Если статус не грузится</div>
+                    <div class="note__body">
+                        Иногда публичные API блокируются политикой CORS. В таком случае включи прокси (см.
+                        <code>README.txt</code>) или проверь в консоли браузера ошибку “No
+                        'Access-Control-Allow-Origin'…”.
+                    </div>
+                </div>
             </div>
-            <div class="kv">
-              <div class="kv__k">Версия</div>
-              <div class="kv__v" id="versionText">—</div>
+        </section>
+
+        <section class="section" id="map">
+            <div class="container">
+                <div class="section__head">
+                    <h2 class="section__title">Карта мира</h2>
+                    <p class="section__desc">Подключи Dynmap / BlueMap и просто вставь ссылку — карта появится здесь.
+                    </p>
+                </div>
+
+                <div class="map">
+                    <div class="map__embed" id="mapEmbed">
+                        <!-- Если MAP_EMBED_URL пустая, покажем плейсхолдер -->
+                        <div class="map__placeholder">
+                            <div class="map__phTitle">Карта пока не настроена</div>
+                            <div class="map__phText">
+                                Открой <code>assets/js/config.js</code> и укажи <code>MAP_EMBED_URL</code>
+                                (Dynmap/BlueMap URL).
+                            </div>
+                            <div class="map__phHint">
+                                Пример: <code>https://map.yourdomain.tld/</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map__info">
+                        <h3>Подсказка</h3>
+                        <p>
+                            Dynmap чаще всего встраивается через <b>iframe</b>. Если карта на отдельном домене/порту —
+                            используй реверс‑прокси
+                            (Nginx/Caddy) на тот же домен, чтобы всё работало красиво.
+                        </p>
+                        <ul class="list">
+                            <li>Dynmap: 2D карта, привычный интерфейс.</li>
+                            <li>BlueMap: 3D просмотр мира в браузере.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="kv">
-              <div class="kv__k">MOTD</div>
-              <div class="kv__v kv__v--small" id="motdText">—</div>
+        </section>
+
+        <section class="section section--alt" id="community">
+            <div class="container">
+                <div class="section__head">
+                    <h2 class="section__title">Сообщество</h2>
+                    <p class="section__desc">Новости, апдейты сборки, голосовые, помощь новичкам.</p>
+                </div>
+
+                <div class="cta">
+                    <a class="cta__btn" id="discordBtn" href="#" target="_blank" rel="noopener">
+                        <span class="icon icon--discord" aria-hidden="true"></span>
+                        Discord
+                    </a>
+                    <a class="cta__btn" id="youtubeBtn" href="#" target="_blank" rel="noopener">
+                        <span class="icon icon--youtube" aria-hidden="true"></span>
+                        YouTube
+                    </a>
+                </div>
             </div>
-            <div class="kv">
-              <div class="kv__k">Последнее обновление</div>
-              <div class="kv__v kv__v--small" id="lastUpdate">—</div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__left">
+                <div class="footer__brand">BMC5 SERVER</div>
+                <div class="footer__small">© <span id="year"></span> • Minecraft сервер с модами • Normal • Уникальный
+                    мир</div>
             </div>
-          </div>
-        </div>
-
-        <div class="note">
-          <div class="note__title">Если статус не грузится</div>
-          <div class="note__body">
-            Иногда публичные API блокируются политикой CORS. В таком случае включи прокси (см. <code>README.txt</code>) или проверь в консоли браузера ошибку “No 'Access-Control-Allow-Origin'…”.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="map">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Карта мира</h2>
-          <p class="section__desc">Подключи Dynmap / BlueMap и просто вставь ссылку — карта появится здесь.</p>
-        </div>
-
-        <div class="map">
-          <div class="map__embed" id="mapEmbed">
-            <!-- Если MAP_EMBED_URL пустая, покажем плейсхолдер -->
-            <div class="map__placeholder">
-              <div class="map__phTitle">Карта пока не настроена</div>
-              <div class="map__phText">
-                Открой <code>assets/js/config.js</code> и укажи <code>MAP_EMBED_URL</code> (Dynmap/BlueMap URL).
-              </div>
-              <div class="map__phHint">
-                Пример: <code>https://map.yourdomain.tld/</code>
-              </div>
+            <div class="footer__right">
+                <a id="discordLink" href="#" target="_blank" rel="noopener">Discord</a>
+                <span class="dot">•</span>
+                <a id="youtubeLink" href="#" target="_blank" rel="noopener">YouTube</a>
             </div>
-          </div>
-
-          <div class="map__info">
-            <h3>Подсказка</h3>
-            <p>
-              Dynmap чаще всего встраивается через <b>iframe</b>. Если карта на отдельном домене/порту — используй реверс‑прокси
-              (Nginx/Caddy) на тот же домен, чтобы всё работало красиво.
-            </p>
-            <ul class="list">
-              <li>Dynmap: 2D карта, привычный интерфейс.</li>
-              <li>BlueMap: 3D просмотр мира в браузере.</li>
-            </ul>
-          </div>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="section section--alt" id="community">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Сообщество</h2>
-          <p class="section__desc">Новости, апдейты сборки, голосовые, помощь новичкам.</p>
-        </div>
-
-        <div class="cta">
-          <a class="cta__btn" id="discordBtn" href="#" target="_blank" rel="noopener">
-            <span class="icon icon--discord" aria-hidden="true"></span>
-            Discord
-          </a>
-          <a class="cta__btn" id="youtubeBtn" href="#" target="_blank" rel="noopener">
-            <span class="icon icon--youtube" aria-hidden="true"></span>
-            YouTube
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__left">
-        <div class="footer__brand">BMC5 SERVER</div>
-        <div class="footer__small">© <span id="year"></span> • Minecraft сервер с модами • Hard • Уникальный мир</div>
-      </div>
-      <div class="footer__right">
-        <a id="discordLink" href="#" target="_blank" rel="noopener">Discord</a>
-        <span class="dot">•</span>
-        <a id="youtubeLink" href="#" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="./assets/js/config.js"></script>
-  <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/config.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
+
 </html>
