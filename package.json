@@ -1,0 +1,22 @@
+{
+  "name": "bmc5-website",
+  "version": "1.0.0",
+  "description": "Website for BMC5 Minecraft Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.7.0",
+    "adm-zip": "^0.5.10"
+  },
+  "keywords": [
+    "minecraft",
+    "server",
+    "website"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}
