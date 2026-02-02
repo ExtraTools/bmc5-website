@@ -63,10 +63,10 @@
 
   // Copy IP
   copyIpBtn?.addEventListener("click", async () => {
-    try{
+    try {
       await navigator.clipboard.writeText(addr);
       toast(copyIpBtn, "Скопировано!");
-    }catch(e){
+    } catch (e) {
       // Fallback
       const ta = document.createElement("textarea");
       ta.value = addr;
@@ -81,33 +81,24 @@
   refreshBtn?.addEventListener("click", () => refreshStatus(true));
 
   // --- status ---
-  const API_BASE_JAVA = "https://api.mcsrvstat.us/3/";
-  const API_BASE_BEDROCK = "https://api.mcsrvstat.us/bedrock/3/";
+  // mcapi.us работает лучше с playit туннелями
+  const API_URL = `https://mcapi.us/server/status?ip=${encodeURIComponent(addr.replace(':25565', ''))}`;
 
   async function fetchStatus() {
     const useProxy = (cfg.PROXY_BASE || "").trim();
+    let url = API_URL;
     if (useProxy) {
-      const r = await fetch(useProxy + encodeURIComponent(addr), { cache: "no-store" });
-      if (!r.ok) throw new Error("Proxy HTTP " + r.status);
-      return await r.json();
+      url = useProxy + encodeURIComponent(addr);
     }
 
-    const base = cfg.BEDROCK ? API_BASE_BEDROCK : API_BASE_JAVA;
-    const r = await fetch(base + encodeURIComponent(addr), { cache: "no-store" });
+    const r = await fetch(url, { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);
     return await r.json();
   }
 
   function parseMotd(data) {
-    // mcsrvstat.us может возвращать motd.clean как массив строк
-    if (data?.motd?.clean) {
-      if (Array.isArray(data.motd.clean)) return data.motd.clean.join(" / ");
-      return String(data.motd.clean);
-    }
-    if (data?.motd?.raw) {
-      if (Array.isArray(data.motd.raw)) return data.motd.raw.join(" / ");
-      return String(data.motd.raw);
-    }
+    if (data?.motd_json) return String(data.motd_json);
+    if (data?.motd) return String(data.motd);
     return "—";
   }
 
@@ -117,20 +108,20 @@
     miniStatus.textContent = "ONLINE";
     miniStatus.className = "pill pill--ok";
 
-    const online = data?.players?.online ?? "—";
+    // mcapi.us format: players.now / players.max
+    const online = data?.players?.now ?? data?.players?.online ?? "—";
     const max = data?.players?.max ?? "—";
     playersText.textContent = `${online} / ${max}`;
     miniPlayers.textContent = `${online}/${max}`;
 
-    const v = data?.version || data?.protocol?.name || "—";
+    const v = data?.server?.name || data?.version || "—";
     versionText.textContent = String(v);
     miniVersion.textContent = String(v);
 
     const motd = parseMotd(data);
     motdText.textContent = motd;
 
-    const ip = data?.ip ? `${data.ip}:${data.port ?? ""}` : "";
-    statusMeta.textContent = ip ? `IP: ${ip}` : "IP: —";
+    statusMeta.textContent = `Сервер работает`;
   }
 
   function setOfflineUI(reason) {
@@ -163,13 +154,13 @@
 
   async function refreshStatus(showToast) {
     setLoadingUI();
-    try{
+    try {
       const data = await fetchStatus();
       if (data?.online) setOnlineUI(data);
       else setOfflineUI("сервер оффлайн");
       lastUpdate.textContent = new Date().toLocaleString();
       if (showToast) toast(refreshBtn, "Обновлено");
-    }catch(e){
+    } catch (e) {
       setOfflineUI(e?.message || "ошибка запроса");
       lastUpdate.textContent = new Date().toLocaleString();
       if (showToast) toast(refreshBtn, "Ошибка");
@@ -191,7 +182,7 @@
 
     const rect = anchorEl?.getBoundingClientRect?.();
     if (rect) {
-      t.style.left = Math.max(12, Math.min(window.innerWidth - 12, rect.left + rect.width/2)) + "px";
+      t.style.left = Math.max(12, Math.min(window.innerWidth - 12, rect.left + rect.width / 2)) + "px";
       t.style.top = Math.max(12, rect.top - 12) + "px";
       t.style.transform = "translate(-50%, -100%)";
     }
@@ -203,12 +194,12 @@
   }
 
   function escapeAttr(s) {
-    return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 })();
 
 /* toast styles injected (small, keep CSS file clean-ish) */
-(function injectToastCSS(){
+(function injectToastCSS() {
   const css = `
   .toast{
     position:fixed;
