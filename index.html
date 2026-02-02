@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMC5 Server - Minecraft with 260+ Mods</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Font (Minecraft) -->
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content glass-panel">
+            <div class="status-badge" id="server-status-badge">
+                <div class="status-dot"></div>
+                <span id="player-count">BMC5 Online</span>
+            </div>
+
+            <h1 class="hero-title">BMC5 SERVER</h1>
+            <p class="hero-subtitle">Уникальный модпак. 260+ модов. Невероятное приключение.</p>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="copyIP()">
+                    <i class="fas fa-play"></i> КОПИРОВАТЬ IP
+                </button>
+                <a href="#about" class="btn btn-outline">
+                    УЗНАТЬ БОЛЬШЕ
+                </a>
+            </div>
+
+            <div id="ip-tooltip" style="opacity:0; transition: opacity 0.3s; margin-top: 10px; color: var(--mc-green);">
+                IP скопирован!
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="section features-section">
+        <div class="container">
+            <h2 class="section-title">ОСОБЕННОСТИ СЕРВЕРА</h2>
+            <div class="features-grid">
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>260+ МОДОВ</h3>
+                    <p>Огромная сборка: новые биомы, данжи, мобы и механизмы. BMC5 - это новый уровень выживания.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fas fa-hammer"></i></div>
+                    <h3>ХАРДКОР</h3>
+                    <p>Сложность Hard. Умные мобы, новые боссы и опасные подземелья ждут смельчаков.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>НОВЫЙ МИР</h3>
+                    <p>Генерация Tectonic + Terralith. Невероятные пейзажи, которые хочется исследовать.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>СООБЩЕСТВО</h3>
+                    <p>Дружелюбные игроки, отсутствие привата (на доверии) и совместные ивенты.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- World Map Section -->
+    <section class="section map-section">
+        <div class="container">
+            <div class="map-container glass-panel">
+                <div class="map-overlay">
+                    <h2 class="map-title">ЖИВАЯ КАРТА МИРА</h2>
+                    <p>Следи за игроками и постройками в реальном времени</p>
+                    <button class="btn btn-primary toggle-map-btn"><i class="fas fa-map"></i> ОТКРЫТЬ КАРТУ</button>
+                </div>
+                <!-- Placeholder image for map -->
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt fa-5x" style="opacity: 0.5;"></i>
+                    <!-- Сюда можно будет вставить iframe с Dynmap/BlueMap -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>BMC5</h2>
+                    <p>Minecraft Server 1.21.1</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Главная</a>
+                    <a href="#">Правила</a>
+                    <a href="#">Карта</a>
+                    <a href="#">Донат</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BMC5 Server. Not affiliated with Mojang Studios.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>
